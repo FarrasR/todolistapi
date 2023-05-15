@@ -93,7 +93,7 @@ func (h *TodoHandler) CreateTodo(c *gin.Context) {
 		response.Error(c, http.StatusBadRequest, "failed", err.Error())
 		return
 	}
-	response.OK(c, todo)
+	response.OKCreated(c, todo)
 }
 
 func (h *TodoHandler) DeleteTodo(c *gin.Context) {
@@ -133,7 +133,7 @@ func (h *TodoHandler) UpdateTodo(c *gin.Context) {
 		response.Error(c, http.StatusBadRequest, http.StatusText(http.StatusBadRequest), "title cannot be null")
 		return
 	}
-	todo, err := h.TodoUsecase.UpdateTodo(uint(id), request.Title)
+	todo, err := h.TodoUsecase.UpdateTodo(uint(id), request.Title, request.IsActive, request.Priority)
 	if err != nil {
 		if err.Error() == "record not found" {
 			response.Error(c, http.StatusNotFound, "Not Found", fmt.Sprintf("Todo with ID %d Not Found", id))

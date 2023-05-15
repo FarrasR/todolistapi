@@ -56,5 +56,7 @@ type RequestCreateTodo struct {
 }
 
 type RequestUpdateTodo struct {
-	Title string `json:"title"`
+	Title    string `json:"title"`
+	IsActive bool   `json:"IsActive"`
+	Priority string `json:"priority"`
 }

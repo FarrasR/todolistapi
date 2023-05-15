@@ -60,7 +60,7 @@ func (u *todoUsecase) DeleteTodo(TodoID uint) error {
 	return nil
 }
 
-func (u *todoUsecase) UpdateTodo(todoID uint, title string) (model.Todo, error) {
+func (u *todoUsecase) UpdateTodo(todoID uint, title string, isActive bool, priotity string) (model.Todo, error) {
 	todo, err := u.TodoRepository.GetSingleTodo(todoID)
 
 	if err != nil {
@@ -70,6 +70,8 @@ func (u *todoUsecase) UpdateTodo(todoID uint, title string) (model.Todo, error) 
 		return model.Todo{}, err
 	}
 	todo.Title = title
+	todo.IsActive = isActive
+	todo.Priority = priotity
 
 	return u.TodoRepository.UpdateTodo(todo)
 }

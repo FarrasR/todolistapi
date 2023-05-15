@@ -87,7 +87,7 @@ func (h *ActivityHandler) CreateActivity(c *gin.Context) {
 		response.Error(c, http.StatusBadRequest, "failed", err.Error())
 		return
 	}
-	response.OK(c, result)
+	response.OKCreated(c, result)
 }
 
 func (h *ActivityHandler) DeleteActivity(c *gin.Context) {

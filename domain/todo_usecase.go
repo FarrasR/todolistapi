@@ -8,5 +8,5 @@ type TodoUsecase interface {
 	GetOneTodo(TodoID uint) (model.Todo, error)
 	CreateTodo(ActivityID uint, title string) (model.Todo, error)
 	DeleteTodo(TodoID uint) error
-	UpdateTodo(todoID uint, title string) (model.Todo, error)
+	UpdateTodo(todoID uint, title string, isActive bool, priotity string) (model.Todo, error)
 }
